@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+        <script type="text/javascript">
+            
+            var post = function(value) {
+                window.webkit.messageHandlers.reCaptcha.postMessage(value);
+            };
+        
+            var onloadCallback = function() {
+                try {
+                    grecaptcha.render('html_element', {
+                                      'sitekey': '{site_key}',
+                                      'callback': captchaSolved,
+                                      'expired-callback': captchaExpired,
+                                      });
+                    post(["didLoad"]);
+                } catch (_) {
+                    window.setTimeout(function() { onloadCallback }, 50);
+                }
+            };
+            function captchaSolved(response) {
+                post(["didSolve", response]);
+            }
+        
+            function captchaExpired(response) {
+                post(["didExpire"]);
+            }
+        
+            function resetCaptcha() {
+                grecaptcha.reset();
+                post(["didReset"]);
+            }
+        
+            function triggerBody(){
+                post(["didPressEmptySpace"]);
+            }
+        </script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=replaced_locale_string"
+            async defer>
+        </script>
+    </head>
+    <body style="background-color: transparent;" onclick="triggerBody()">
+        <div style="position: absolute; height: 50px;top: 0; right: 0; bottom: 0; left: 0; margin: auto;" id="html_element" align="center"/>
+    </body>
+</html>
