@@ -1,13 +1,14 @@
 # reCAPTCHA
 
 A Google reCAPTCHA library design for native Objective-C. <br/>
-This library automatically handles ReCaptcha's events and retrieves the validation token.
+This library automatically handles reCAPTCHA's events and retrieves the validation token.
 
 ## Preview
 <img src="Screenshot/ezgif-4-85204e33dc1b.gif" width=350/>
 
 ## Reminder
-Beware that this library only works for ReCaptcha v2 "I'm not a robot" tickbox. Make sure to check the reCAPTCHA v2 "I'm not a robot" tickbox option when creating your API Key.
+Beware that this library only works for ReCaptcha v2 "I'm not a robot" tickbox. <br/>
+Make sure to check the reCAPTCHA v2 "I'm not a robot" tickbox option when creating your API Key. <br/>
 <img src="Screenshot/Screenshot_2019-06-23_at_3.34.07_PM.png" width=600/>
 
 ## Setup
